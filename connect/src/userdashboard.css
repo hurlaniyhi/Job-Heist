@@ -1,0 +1,77 @@
+#menu_feedbutton{
+    
+    height: 40px;
+    background-color: rgba(52,58,64,0.3);
+    border-color: #28A745;
+    color: #28A745;
+    border-radius: 10px;
+    float: left;
+    display: block;
+    margin-left: 40px;
+    margin-top: 8px;
+    width: 95px;
+    
+}
+
+.button_feedcont{
+    
+    display: block;
+    height: 55px;
+    /* background-color: rgba(52,58,64,0.6); */
+    background-color: whitesmoke;
+    clear: right;
+  }
+
+  .mainContainer{
+    float: left;
+    width: 20%;
+    border: 30px solid white;
+    height:700px;
+    background-color: white;
+    box-shadow: 10px 10px 20px white;
+    /* border-color: #F2F4F6; */
+       
+}
+.content{
+    float: left;
+    width: 80%;
+    
+    background-color: #EEEEEE
+    
+}
+
+.samerow{
+    /* display:flex;
+    flex-direction:row; */
+    display: block;
+    clear: right;
+    background-color: #EEEEEE;
+}
+
+.gtlogo{
+    width: 60%;
+    height: 20%;
+    border-radius: 100%;
+    margin-left: 18%;
+    margin-top: 20px;
+}
+.nav{
+    
+    /* background-color: #EEEEEE; */
+    height: 50px;
+    width: 100%;
+    /* color: #3C4858; */
+    
+    border-radius: 5px;
+    border-bottom-style: none;
+    border-right-style: none;
+    
+}
+hr{
+    margin-left: 5%;
+    margin-left: 5%;
+    margin-top: 30px;
+    width: 90%;
+    
+    opacity: 0.5;
+}
