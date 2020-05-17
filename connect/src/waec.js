@@ -1,6 +1,7 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom'
 import createReactClass from 'create-react-class'
+import axios from 'axios'
 // import {FaGlobe} from 'react-icons/fa'
 // import {FaSignOutAlt} from 'react-icons/fa'
 
@@ -8,6 +9,45 @@ import "./waec.css"
 
 
 var Waec = createReactClass({
+    getInitialState: function(){
+        return{
+            Waec: ""
+        }
+    },
+    handleChange: function(e){
+        this.setState({
+            Waec: URL.createObjectURL(e.target.files[0])
+        })
+    },
+    post: function(e){
+        e.preventDefault()
+
+        const data = {
+        Waec: this.state.Waec,
+        Id: localStorage.getItem("Id")
+        }
+
+        axios.post('http://localhost:3001/Waec', data).then((res)=>{
+            //alert("Data successfully encrypted")
+            
+            if(res.data == "good"){
+                alert("O'Level result successfully uploaded")
+            }
+           else if(res.data == "bad"){
+                alert("Error occur during insertion")
+            }
+            else{
+               
+                alert(res.data)
+               
+            }
+            
+        }).catch((err)=>{
+            alert("error occurred")
+            console.log(err)
+        })
+       
+    },
     render: function(){
         return(
             <div>
@@ -19,17 +59,17 @@ var Waec = createReactClass({
                     <br/><br/>
                 <div className="formBlock">
                     <br/><br/>
-                    <form>
+                <form onSubmit={this.post}>
                 <h3 style={{textAlign: "center"}}>O'Level Certificate Upload</h3>
                 <br/><br/><br/>
                 
-                <input name="Waec" className="ufn" type="file" required/><br/><br/><br/>
-                <button className="upload">Upload</button><br/><br/><br/><br/>
+                <input name="Waec" onChange={this.handleChange} className="cufn" type="file" required/><br/><br/><br/>
+                <button className="cupload" value="submit">Upload</button><br/><br/><br/><br/>
                 </form>
                 </div>
                 <br/><br/>
                 </div>
-                <br/><br/><br/><br/><br/>
+                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
             </div>
         )
     }

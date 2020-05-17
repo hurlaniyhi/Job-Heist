@@ -35,9 +35,9 @@ var LandingPage = createReactClass({
             </div>
             <br/>
             <h3 className="landH3" style={{color: "black" ,fontWeight: "800", textAlign: "center"}}>About Job Heist</h3><br/>
-            <p className="landP" style={{color: "black"}}>Job Heist has come to reduce unemployment rate and saves the time spent by</p>
-            <p className="landP" style={{color: "black"}}>the job recruiter when filtering job seekers applications.</p>
-            <p className="landP" style={{color: "black"}}> Job heist makes Job seekers and recruiters find each other easily</p>
+            <p className="landP1" style={{color: "black"}}>Job Heist has come to reduce unemployment rate and saves the time spent by</p>
+            <p className="landP1" style={{color: "black"}}>the job recruiter when filtering job seekers applications.</p>
+            <p className="landP1" style={{color: "black"}}> Job heist makes Job seekers and recruiters find each other easily</p>
             <br/><br/>
             <div className="footer">
                 <p className="landP" style={{fontWeight: "bold", paddingTop:"15px"}}>Job Heist by Ridwan Kolawole</p>

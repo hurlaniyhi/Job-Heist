@@ -36,7 +36,7 @@
     box-shadow: 10px 10px 20px 5px black;
     margin-top : 95px;
     width: 35%;
-    margin-bottom:  470px;
+    margin-bottom:  120px;
     margin-right: 32.5%;
     margin-left: 32.5%;
     /*border: 2px solid orange;*/
@@ -110,10 +110,38 @@ button:focus {outline:0;}
     width: 20px
 }
 
-@media(max-width: 600px){
+@media(max-width: 1024px) and (min-height:1366px){
+    .signincontainer{
+        width: 50%;
+        margin-left: 25%;
+        margin-right: 25%;
+        margin-top: 360px;
+        margin-bottom: 360px;
+    }
+}
+
+@media(max-width: 768px) and (min-height:1024px){
     .signincontainer{
         width: 60%;
         margin-left: 20%;
         margin-right: 20%;
+        margin-top: 180px;
+        margin-bottom: 200px;
+    }
+}
+
+@media(max-width: 990px){
+    .signincontainer{
+        width: 50%;
+        margin-left: 25%;
+        margin-right: 25%;
+    }
+} 
+
+@media(max-width: 600px){
+    .signincontainer{
+        width: 70%;
+        margin-left: 15%;
+        margin-right: 15%;
     }
 } 

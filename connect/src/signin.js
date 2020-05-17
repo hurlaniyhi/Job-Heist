@@ -3,12 +3,66 @@ import {NavLink} from 'react-router-dom'
 import createReactClass from 'create-react-class'
 import {FaGlobe} from 'react-icons/fa'
 import {FaHome} from 'react-icons/fa'
+import axios from 'axios'
 // import {FaInstagram} from 'react-icons/fa'
 // import {FaFacebook} from 'react-icons/fa'
 // import {FaTwitter} from 'react-icons/fa'
 import "./signIn.css"
 
 var SignIn = createReactClass({
+    getInitialState: function(){
+        return{
+            Password: "",
+            Username: "",
+           
+        }
+    },
+    handleChange: function(e){
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+       
+    },
+
+    post: function(e){
+        e.preventDefault()
+
+       
+           
+        const data = {
+  
+            Username: this.state.Username,
+            Password: this.state.Password
+            
+        }
+
+        axios.post('http://localhost:3001/signin', data).then((res)=>{
+            //alert("Data successfully encrypted")
+            
+            if(res.data.nav == "jobseeker"){
+                localStorage.setItem("user",this.state.Username)
+                localStorage.setItem("Id",res.data.Id)
+                this.props.history.push("/signin/userdashboard/dashboard.js")
+            }
+           else if(res.data.nav == "requiter"){
+               localStorage.setItem("user",this.state.Username)
+               localStorage.setItem("Id",res.data.Id)
+                this.props.history.push("/signin/requiter/Rdashboard.js")
+            }
+            else{
+               
+                alert(res.data)
+                document.querySelector("#signininp1").value = ""
+                document.querySelector("#signintoo").value = ""
+               
+            }
+            
+        }).catch((err)=>{
+            alert("error occurred")
+            console.log(err)
+        })
+       
+    },
     render: function(){
         return (
             <div>
@@ -24,18 +78,20 @@ var SignIn = createReactClass({
             <div className="signincontainer">
                 <h2 className="hh">Sign In</h2>
                 <br/>
-                <form action="/" method="POST" autocomplete="off">
+                <form action="/" onSubmit={this.post} autocomplete="off">
                 
-                <input id="signininp1" name="username" className="signininp1" type="text" placeholder = "Enter Username" required/><br/><br/><br/>
+                <input id="signininp1" onChange={this.handleChange} name="Username" className="signininp1" type="text" placeholder = "Enter Username" required/><br/><br/><br/>
                
-                <input id="signintoo" name="password" className="signininp" type="password" placeholder = "Enter Password" required/> <br/><br/><br/><br/>
+                <input id="signintoo" onChange={this.handleChange} name="Password" className="signininp" type="password" placeholder = "Enter Password" required/> <br/><br/><br/><br/>
                
-                <NavLink exact to = "/signin/userdashboard/dashboard.js" style={{textDecoration: "none"}}><button className="signinbutt" value = "submit">Log In</button></NavLink>
+                <button className="signinbutt" value = "submit">Log In</button>
                 <br/>
-                <NavLink exact to = "./signUp" style={{paddingLeft: "34%"}}>Create New Account</NavLink><br/>
-                <NavLink exact to = "./forgetPassword" style={{paddingLeft: "36%"}}>Forget Password?</NavLink>
+                <NavLink exact to = "./signUp"><p  style={{textAlign: "center"}}>Create New Account</p></NavLink>
+                <NavLink exact to = "./forgetPassword"><p style={{textAlign: "center"}}>Forget Password?</p></NavLink>
                 </form>
                 <br/>
+
+                
                                
             </div>
             <div className="signinoverlay"></div>

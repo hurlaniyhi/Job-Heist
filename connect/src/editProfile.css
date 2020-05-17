@@ -145,7 +145,7 @@
     padding-top: 30px;
     text-align: center;
     height: 70px;
-    border-radius: 100px;
+   
     border-top-style: outset;
     border-left-style: outset;
 
@@ -153,10 +153,12 @@
 
 
 .DOB{
-    margin-left: 8%; 
-    margin-right: 6%;
-    display: inline-block;
-    width: 39%;
+    display: block;
+    margin-bottom: 30px;
+    width: 84%;
+    margin-left: 8%;
+    margin-right: 8%;
+    text-align: center;
     text-align: center;
     height: 50px;
     border-radius: 100px;
@@ -169,24 +171,28 @@
 
 .gender{
      
+    display: block;
+    /* margin-bottom: 30px; */
+    width: 84%;
+    margin-left: 8%;
     margin-right: 8%;
-    display: inline-block;
-    width: 39%;
+    padding-left:20%;
+    padding-right: 20%;
     line-height: 2px;
-    padding-left: 15%;
-    padding-right: 13%;
-    text-align: center;
+   
+    
     height: 50px;
     border-radius: 100px;
 
 }
 
 .pn{
-    margin-left: 8%; 
-    margin-right: 6%;
-    display: inline-block;
-    width: 39%;
-    line-height: 2px;
+    display: block;
+    margin-bottom: 20px;
+    width: 84%;
+    margin-left: 8%;
+    margin-right: 8%;
+    text-align: center;
     text-align: center;
     height: 50px;
     border-radius: 100px;
@@ -199,10 +205,12 @@
 
 .hn{
      
+    display: block;
+    /* margin-bottom: 30px; */
+    width: 84%;
+    margin-left: 8%;
     margin-right: 8%;
-    display: inline-block;
-    width: 39%;
-    line-height: 2px;
+    text-align: center;
     text-align: center;
     height: 50px;
     border-radius: 100px;
@@ -215,9 +223,11 @@
 
 .nysc{
     
+    display: block;
+        /* margin-bottom: 30px; */
+    width: 84%;
+    margin-left: 8%;
     margin-right: 8%;
-    display: inline-block;
-    width: 39%;
     text-align: center;
     height: 50px;
     border-radius: 100px;
@@ -229,14 +239,14 @@
 
 
 .status{
-    margin-left: 8%; 
-    margin-right: 6%;
-    display: inline-block;
-    width: 39%;
-    line-height: 2px;
-    padding-left: 12%;
-    padding-right: 12%;
-    text-align: center;
+    
+    display: block;
+    margin-bottom: 30px;
+    width: 84%;
+    margin-left: 8%;
+    margin-right: 8%;
+    padding-left: 20%;
+    padding-right: 20%;
     height: 50px;
     border-radius: 100px;
     border-top-style: outset;
@@ -247,10 +257,12 @@
 
 .yoe{
     
-    margin-right: 8%;
-    display: inline-block;
-    width: 39%;
+    display: block;
+    /* margin-bottom: 30px; */
+    width: 84%;
     text-align: center;
+    margin-left: 8%;
+    margin-right: 8%;
     height: 50px;
     border-radius: 100px;
     border-top-style: outset;
@@ -261,14 +273,16 @@
 
 
 .cod{
-    margin-left: 8%; 
-    margin-right: 6%;
-    display: inline-block;
-    width: 39%;
-    line-height: 2px;
-    padding-left: 12%;
-    padding-right: 12%;
-    text-align: center;
+    display: block;
+    margin-bottom: 30px;
+    width: 84%;
+    margin-left: 8%;
+    margin-right: 8%;
+    padding-left: 20%;
+    padding-right: 20%;
+    border-top-style: solid;
+   
+    
     height: 50px;
     border-radius: 100px;
     border-top-style: outset;
@@ -279,10 +293,12 @@
 
 
 .cty{
-    margin-left: 8%; 
-    margin-right: 6%;
-    display: inline-block;
-    width: 39%;
+    display: block;
+    margin-bottom: 30px;
+    width: 84%;
+    margin-left: 8%;
+    margin-right: 8%;
+    text-align: center;
     text-align: center;
     height: 50px;
     border-radius: 100px;
@@ -295,9 +311,12 @@
 
 .st{
      
+    display: block;
+    /* margin-bottom: 30px; */
+    width: 84%;
+    margin-left: 8%;
     margin-right: 8%;
-    display: inline-block;
-    width: 39%;
+    text-align: center;
     line-height: 2px;
     text-align: center;
     height: 50px;
@@ -325,3 +344,49 @@
     
 }
 
+
+@media(max-width: 598px){
+   
+  
+    
+    
+    .st{
+        
+        
+    }
+
+   
+    .hn{
+        display: block;
+        /* margin-bottom: 30px; */
+        width: 84%;
+        margin-left: 8%;
+        margin-right: 8%;
+        text-align: center;
+        
+    }
+
+    .cod{
+       
+    }
+    .yoe{
+        display: block;
+        /* margin-bottom: 30px; */
+        width: 84%;
+        margin-left: 8%;
+        margin-right: 8%;
+        
+    }
+}
+
+@media(max-width: 498px){
+    .eh4{
+        font-size: 18px;
+        padding-left: 0%;
+        text-align: center;
+        padding-top: 25px;
+    }
+    .eh3{
+        font-size: 20px;
+    }
+}

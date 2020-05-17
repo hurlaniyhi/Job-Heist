@@ -12,7 +12,7 @@ var RDashboard = createReactClass({
         return(
             <div>
                 <div style={{backgroundColor: "#EB4844", marginLeft:"7%",width:"86%", marginTop: "90px",height: "45px",marginRight: "7%"}}>
-                    <h4 style={{textAlign: "left", color: "whitesmoke",paddingLeft: "7%",paddingTop: "5px"}}>WELLCOME TO JOB HEIST</h4>
+                    <h4 style={{textAlign: "left", color: "whitesmoke",paddingLeft: "7%",paddingTop: "5px"}}>WELCOME TO JOB HEIST</h4>
                 </div>
                 <div className="outerBlock">
                 
@@ -23,9 +23,9 @@ var RDashboard = createReactClass({
                 <h2 style={{textAlign: "center"}}>Instruction</h2>
                 <br/><br/>
                 
-                    <p className="ifn"><strong>1.</strong> Please select Compose to compose mail you will be sending</p>
-                    <p className="ifn"><strong>2.</strong> Please select Search and put in the qualities you are looking for </p>
-                    <p className="ifn"><strong>4.</strong> Click on the logo at the top left corner to upload profile picture</p>
+                    <p className="ifn1"><strong>1.</strong> Please select Compose to compose mail you will be sending</p>
+                    <p className="ifn1"><strong>2.</strong> Please select Search and put in the qualities you are looking for </p>
+                    <p className="ifn1"><strong>4.</strong> Click on the logo at the top left corner to upload profile picture</p>
                     
                 
                 
@@ -34,7 +34,7 @@ var RDashboard = createReactClass({
                 </div>
                 <br/><br/>
                 </div>
-                <br/><br/><br/><br/><br/>
+                <br/><br/><br/><br/><br/><br/><br/><br/>
             </div>
         )
     }

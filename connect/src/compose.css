@@ -35,7 +35,7 @@
     padding-top: 30px;
     text-align: center;
     height: 70px;
-    border-radius: 100px;
+    /* border-radius: 100px; */
     border-top-style: outset;
     border-left-style: outset;
     
@@ -57,7 +57,7 @@
 
 }
 
-.upload{
+.mupload{
     width: 30%;
     margin-right: 35%;
     margin-left: 35%;
@@ -67,4 +67,16 @@
     background-color: rgba(0, 0, 255,0.4);
     border-bottom-style: none;
     border-right-style: none;
+}
+
+@media(max-width: 488px){
+    .mupload{
+        width: 45%;
+        margin-left: 27.5%;
+        margin-right: 27.5%;
+    }
+    #ch4{
+        font-size: 12px;
+        padding-right: 5%;
+    }
 }

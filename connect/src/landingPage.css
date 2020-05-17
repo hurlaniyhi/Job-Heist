@@ -102,9 +102,19 @@
 .landP{
     text-align: center;
     color: whitesmoke;
+    font-size: 25px;
+    line-height: 35px;
+}
+.landP1{
+    text-align: center;
+    color: whitesmoke;
+    font-size: 20px;
+    line-height: 30px;
 }
 
 .landH2{
+    font-size: 40px;
+    line-height: 20px;
     padding-top: 30px;
     text-align: center;
     color: whitesmoke;
@@ -113,4 +123,31 @@
 .footer{
     background-color: rgba(52,58,64,0.6);
 
+}
+
+@media(max-width: 690px){
+    .landP{
+        font-size: 18px;
+        line-height: 25px;
+    }
+    .landP1{
+        font-size: 16px;
+    }
+}
+
+@media(max-width: 470px){
+    .landP{
+        font-size: 18px;
+        line-height: 25px;
+        padding-left: 7%;
+        padding-right: 7%;
+    }
+    .landP1{
+        font-size: 15px;
+        padding-left: 7%;
+        padding-right: 7%;
+    }
+    .landH2{
+        font-size: 32px;
+    }
 }

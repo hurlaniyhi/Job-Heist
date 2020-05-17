@@ -3,7 +3,7 @@
     width: 90%;
     margin-left: 5%;
     margin-right: 5%;
-    margin-bottom:  50px;
+    margin-bottom:  50%;
     background-color: white;
     border-radius: 1%;
 }
@@ -23,9 +23,10 @@
     /* z-index: 1; */
 }
 
-.ufn{
+.cufn{
     margin-left: 35%; 
     margin-right: 35%;
+    padding-right: 20%;
     text-align: center;
     height: 50px;
     
@@ -33,7 +34,7 @@
 
 }
 
-.upload{
+.cupload{
     width: 30%;
     margin-right: 35%;
     margin-left: 35%;
@@ -43,4 +44,30 @@
     background-color: rgba(0, 0, 255,0.4);
     border-bottom-style: none;
     border-right-style: none;
+}
+
+
+@media(max-width: 650px){
+    .cufn{
+        margin-left: 27%;
+    }
+    .cupload{
+        width:45%;
+        margin-left: 27.5%;
+        margin-right: 27.5%;
+    }
+}
+
+@media(max-width: 450px){
+    .cufn{
+        margin-left: 18%;
+    }
+    
+}
+
+@media(max-width: 340px){
+    .cufn{
+        margin-left: 13%;
+    }
+    
 }
