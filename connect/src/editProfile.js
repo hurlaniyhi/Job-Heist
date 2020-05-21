@@ -31,7 +31,12 @@ var EditProfile = createReactClass({
         }
     },
     componentDidMount: function(){
+        
 
+        if(localStorage.getItem("user") == null && localStorage.getItem("requiter") == null){
+            this.props.history.push("/signin")
+        }
+        else{
         const data = {
             Username: localStorage.getItem("user")
         }
@@ -71,7 +76,7 @@ var EditProfile = createReactClass({
             alert("error occurred")
             console.log(err)
         })
-
+    }
     },
     post: function(e){
 
@@ -99,8 +104,7 @@ var EditProfile = createReactClass({
             AboutYou: this.state.AboutYou
             
         }
-        alert(this.state.COD)
-        alert(this.state.Status)
+        
         axios.post('http://localhost:3001/editProfile', data).then((res)=>{
             
             
@@ -162,7 +166,16 @@ var EditProfile = createReactClass({
                 <input name="PhoneNumber" onChange={this.handleChange} className="pn" type="number" placeholder = "Phone Number" value={this.state.PhoneNumber} required/>
                 <input name="HomeNumber" onChange={this.handleChange} className="hn" type="number" placeholder = "Home Number" value={this.state.HomeNumber} /><br/><br/>
                 <input name="Institution" onChange={this.handleChange} className="ia" type="text" placeholder = "Institution Attended" value={this.state.Institution} required/><br/><br/>
-                <input name="Course" onChange={this.handleChange} className="cs" type="text" placeholder = "Course Studied" value={this.state.Course} required/><br/><br/>
+                
+                <select name="Course" onChange={this.handleChange} className="cs" placeholder="course of study" value={this.state.Course} required>
+                    <option>Course of study</option>
+                    <option value="Electrical/Electronics Engineering">Electrical/Electronics Engineering</option>
+                    <option value="Mechanical Engineering<">Mechanical Engineering</option>
+                    <option value="Accounting">Accounting</option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="Medicine and surgery">Medicine and surgery</option>
+                   
+                </select><br/><br/>
                 <select name="COD" onChange={this.handleChange} className="cod" value={this.state.COD} required>
                     <option>Grade</option>
                     <option value="First Class">First Class</option>

@@ -36,6 +36,10 @@ var Preview = createReactClass({
     },
     componentDidMount: function(){
 
+        if(localStorage.getItem("user") == null && localStorage.getItem("requiter") == null){
+            this.props.history.push("/signin")
+        }
+        else{
         const data = {
             Username: localStorage.getItem("user")
         }
@@ -80,7 +84,7 @@ var Preview = createReactClass({
             alert("error occurred")
             console.log(err)
         })
-
+    }
     },
 
     

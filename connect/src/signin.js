@@ -17,6 +17,14 @@ var SignIn = createReactClass({
            
         }
     },
+    componentDidMount: function(){
+        if(localStorage.getItem("user") != null){
+            this.props.history.push("/signin/userdashboard/dashboard.js")
+        }
+        else if(localStorage.getItem("requiter") != null){
+            this.props.history.push("/signin/requiter/Rdashboard.js")
+        }
+    },
     handleChange: function(e){
         this.setState({
             [e.target.name]: e.target.value
@@ -45,7 +53,7 @@ var SignIn = createReactClass({
                 this.props.history.push("/signin/userdashboard/dashboard.js")
             }
            else if(res.data.nav == "requiter"){
-               localStorage.setItem("user",this.state.Username)
+               localStorage.setItem("requiter",this.state.Username)
                localStorage.setItem("Id",res.data.Id)
                 this.props.history.push("/signin/requiter/Rdashboard.js")
             }

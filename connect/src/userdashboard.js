@@ -47,7 +47,11 @@ var UserDashboard = createReactClass({
         }
     },
     componentDidMount: function(){
-
+        
+        if(localStorage.getItem("user") == null && localStorage.getItem("requiter") == null){
+            this.props.history.push("/signin")
+        }
+        else{
         const data = {
             Username: localStorage.getItem("user")
         }
@@ -81,7 +85,7 @@ var UserDashboard = createReactClass({
             alert("error occurred")
             console.log(err)
         })
-
+    }
     },
     click1: function(){
        
@@ -240,7 +244,7 @@ var UserDashboard = createReactClass({
             }
     },
     logOut: function(){
-       
+       localStorage.clear()
         this.props.history.push('/signin')
     },
     changeColor: function(){

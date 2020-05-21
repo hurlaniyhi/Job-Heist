@@ -1,6 +1,7 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom'
 import createReactClass from 'create-react-class'
+import axios from 'axios'
 // import {FaGlobe} from 'react-icons/fa'
 // import {FaSignOutAlt} from 'react-icons/fa'
 
@@ -8,6 +9,80 @@ import "./compose.css"
 
 
 var Compose = createReactClass({
+    getInitialState: function(){
+        return{
+            MailSubject: "",
+            ComposedMail: ""
+        }
+    },
+    componentDidMount: function(){
+         
+        if(localStorage.getItem("user") == null && localStorage.getItem("requiter") == null){
+            this.props.history.push("/signin")
+        }
+        else{
+        const data = {
+            Username: localStorage.getItem("requiter")
+        }
+
+        axios.post('http://localhost:3001/fetchInfo', data).then((res)=>{
+           
+       
+        if(res.data == "bad"){
+            alert("could not retrieve your information from the database")
+        }
+        else{
+            this.setState({
+                ComposedMail: res.data.ComposedMail,
+                MailSubject: res.data.MailSubject,
+                
+            })
+           
+        }
+            
+            
+            
+        }).catch((err)=>{
+            alert("error occurred")
+            console.log(err)
+        })
+    }
+    },
+    post: function(e){
+
+        e.preventDefault()
+        
+        const data = {
+            Id: localStorage.getItem("Id"),
+            MailSubject : this.state.MailSubject,
+            ComposedMail: this.state.ComposedMail
+            
+        }
+        alert(this.state.ComposedMail)
+        axios.post('http://localhost:3001/compose', data).then((res)=>{
+            
+            
+            if(res.data == "good"){
+                alert("successfully updated")
+            }
+           else if(res.data == "bad"){
+               alert("Error occur during profile update")
+            }
+            else{
+                alert(res.data)
+            }
+            
+        }).catch((err)=>{
+            alert("error occurred")
+            console.log(err)
+        })
+    },
+    handleChange: function(e){
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+        
+    },
     render: function(){
         return(
             <div>
@@ -19,12 +94,12 @@ var Compose = createReactClass({
                     <br/><br/>
                 <div className="formBlock">
                     <br/><br/>
-                    <form>
+                <form onSubmit={this.post}>
                 <h3 style={{textAlign: "center"}}>Compose Mail</h3>
                 <br/>
-                <input name="MailSubject" className="sub" type="text" placeholder = "Subject" required/> <br/><br/>
-                <textarea name="ComposedMail" className="cfn" type="text" required placeholder="Mail Content"></textarea><br/><br/><br/>
-                <button className="mupload">Compose</button><br/><br/><br/><br/>
+                <input name="MailSubject" className="sub1" onChange={this.handleChange} type="text" value={this.state.MailSubject} placeholder = "Subject" required/> <br/><br/>
+                <textarea name="ComposedMail" onChange={this.handleChange} className="cfn" value={this.state.ComposedMail} type="text" required placeholder="Mail Content"></textarea><br/><br/><br/>
+                <button className="mupload" value="submit">Compose</button><br/><br/><br/><br/>
                 </form>
                 </div>
                 <br/><br/>

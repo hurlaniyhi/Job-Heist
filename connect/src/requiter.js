@@ -14,6 +14,7 @@ import "./requiter.css"
 import RDashboard from './Rdashboard.js'
 import Compose from './compose.js'
 import Search from './search.js'
+import Preview from './preview.js'
 // import UploadCert from './uploadCert.js'
 // import NYSC from './nysc.js'
 // import Waec from './waec.js'
@@ -49,9 +50,12 @@ var Requiter = createReactClass({
     },
     componentDidMount: function(){
 
-        
+        if(localStorage.getItem("user") == null && localStorage.getItem("requiter") == null){
+            this.props.history.push("/signin")
+        }
+        else{
         const data = {
-            Username: localStorage.getItem("user")
+            Username: localStorage.getItem("requiter")
         }
 
         axios.post('http://localhost:3001/fetchInfo', data).then((res)=>{
@@ -61,18 +65,15 @@ var Requiter = createReactClass({
         if(res.data == "bad"){
             alert("could not retrieve your information from the database")
         }
-        else if(res.data.Picture.length > 4){
-            
+           
+        else{
+
             document.querySelector("#hint").style.display = "none"
             document.querySelector("#gtlogo").style.display = "block"
             this.setState({
                 profilePics: res.data.Picture,
                 fullname: res.data.Fullname
-            })      
-           
-        }
-        else{
-            alert("there is issue")
+            })     
         }
             
             
@@ -81,7 +82,7 @@ var Requiter = createReactClass({
             alert("error occurred")
             console.log(err)
         })
-
+    }
     },
     click1: function(){
         this.setState({
@@ -227,7 +228,7 @@ var Requiter = createReactClass({
         })
     },
     logOut: function(){
-        
+        localStorage.clear()
         this.props.history.push('/signin')
     },
     changeColor: function(){
@@ -330,6 +331,7 @@ var Requiter = createReactClass({
                 <Route path = "/signin/requiter/Rdashboard.js" component = {RDashboard} />
                 <Route path = "/signin/requiter/compose.js" component = {Compose} />
                 <Route path = "/signin/requiter/search.js" component = {Search} />
+                <Route path = "/signin/requiter/preview.js" component = {Preview} />
                 
                 
                                 

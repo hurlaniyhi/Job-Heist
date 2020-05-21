@@ -27,13 +27,14 @@ var Search = createReactClass({
 
         axios.post('http://localhost:3001/search', data).then((res)=>{
             
-            alert(res.data.list)
+            
             if(res.data.comment == "good"){
-                alert("good")
+                
                 this.setState({
                     information: res.data.list
                 })
-                document.querySelector("#listForm").style.display = "none"
+               
+                document.querySelector("#searchForm").style.display = "none"
                 document.querySelector("#listTable").style.display = "block"
             }
           
@@ -51,6 +52,34 @@ var Search = createReactClass({
             [e.target.name]: e.target.value
         }) 
     },
+    sendMail: function(e){
+      const data = {
+          sendTo: e.target.value,
+          Username: localStorage.getItem("requiter")
+      }  
+
+      axios.post('http://localhost:3001/sendMail', data).then((res)=>{
+            
+            
+            if(res.data.comment == "good"){
+                
+               alert("Mail successfully sent")
+            }
+          
+            else{
+                alert("Mail could not be sent")
+            }
+            
+        }).catch((err)=>{
+            alert("error occurred")
+            console.log(err)
+        })
+    },
+    profile: function(e){
+
+        localStorage.setItem("user",e.target.value)
+        this.props.history.push("/signin/requiter/preview.js")
+    },
     render: function(){
         return(
             <div>
@@ -58,7 +87,8 @@ var Search = createReactClass({
                 <br/><br/><br/>
                 <div className="formBlock">
                     <br/>
-                <form id="searchForm" onSubmit={this.post}>
+                <div id="searchForm">
+                <form onSubmit={this.post}>
                 <br/><br/><br/>
                 <select name="CourseOfStudy" onChange={this.handleChange} className="sub" placeholder="course of study" required>
                     <option>Course of study</option>
@@ -81,17 +111,18 @@ var Search = createReactClass({
                 <br/>
                 <button className="supload" value="submit">Search</button><br/><br/><br/><br/>
                 </form>
-
-                <table id="listTable" style={{display:"none"}}>
+                </div>
+               <div id="listTable" style={{display:"none"}}>
+                <table>
                     <thead>
-                        <tr>
-                            <th>
+                        <tr style={{borderBottomStyle: "1px solid"}}>
+                            <th id="colon1">
                                 Name
                             </th>
-                            <th>
+                            <th id="colon2">
                                 Profile
                             </th>
-                            <th>
+                            <th id="colon3">
                                 Send Mail
                             </th>
                         </tr>
@@ -100,14 +131,16 @@ var Search = createReactClass({
                         {
                             this.state.information.map(list =>(
                                 <tr key={list._id}>
-                                    <td>{list.Fullname}</td>
-                                    <td value={list.Fullname}>View Profile</td>
-                                    <td value={list.Email}>Send Mail</td>
+                                    <td ><button id="but1">{list.Fullname}</button></td>
+                                    <td><button id="but2" onClick={this.profile} value={list.Username} >View Profile</button></td>
+                                    <td ><button onClick={this.sendMail} value={list.Email} id="but3">Send Mail</button></td>
                                 </tr>
                             ))
                         }
                     </tbody>
                 </table>
+                <br/><br/>
+                </div>
 
                 </div>
                 <br/><br/>
