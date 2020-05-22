@@ -58,6 +58,9 @@ var Requiter = createReactClass({
             Username: localStorage.getItem("requiter")
         }
 
+      
+
+      
         axios.post('http://localhost:3001/fetchInfo', data).then((res)=>{
         
            
@@ -65,8 +68,9 @@ var Requiter = createReactClass({
         if(res.data == "bad"){
             alert("could not retrieve your information from the database")
         }
+        
            
-        else{
+        else if(res.data.Picture != undefined){
 
             document.querySelector("#hint").style.display = "none"
             document.querySelector("#gtlogo").style.display = "block"
@@ -74,6 +78,17 @@ var Requiter = createReactClass({
                 profilePics: res.data.Picture,
                 fullname: res.data.Fullname
             })     
+           
+        }
+
+        else if(res.data.Picture == undefined){
+
+           
+            this.setState({
+                profilePics: res.data.Picture,
+                fullname: res.data.Fullname
+            })     
+            
         }
             
             
@@ -264,11 +279,12 @@ var Requiter = createReactClass({
    }
 
 
-    alert(this.state.profilePics)
-    const data = {
-        Picture: this.state.profilePics,
-        Id: localStorage.getItem("Id")
-    }
+    
+    const data = new FormData()
+    data.append('Picture', e.target.files[0])
+    data.append('Id', localStorage.getItem("Id"))
+       
+    
    
     if(this.state.profilePics == ""){
         alert("nothing to save")

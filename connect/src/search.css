@@ -115,6 +115,18 @@ table{
     border-radius: 5px;
     color: whitesmoke;
 }
+#close{
+    width:30%;
+    margin-left: 35%;
+    margin-right: 35%;
+    height: 50px;
+    margin-bottom: 25px;
+    background-color: red;
+    border-bottom-style: none;
+    border-right-style: none;
+    border-radius: 5px;
+    color: whitesmoke;
+}
 
 @media(max-width: 980px){
    #but1{
@@ -144,11 +156,17 @@ table{
     #but3{
      font-size: 11px;
  }
+ #short{
+     font-size: 10px;
+ }
 }
 @media(max-width: 420px){
     #listTable{
         width: 90%;
         margin-left: 5%;
         margin-right: 5%;
+    }
+    #short{
+        font-size: 10px;
     }
 }

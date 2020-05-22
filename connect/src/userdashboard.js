@@ -26,6 +26,7 @@ import axios from 'axios'
 var UserDashboard = createReactClass({
     getInitialState: function(){
         return {
+            fullname: "",
             profilePics: "",
             bg1: "#EEEEEE",
             c1: "#3C4858",
@@ -63,21 +64,28 @@ var UserDashboard = createReactClass({
         if(res.data == "bad"){
             alert("could not retrieve your information from the database")
         }
-        else if(res.data.Picture.length > 4){
+        else if(res.data.Picture != undefined){
             
             document.querySelector("#hint").style.display = "none"
             document.querySelector("#gtlogo").style.display = "block"
-            // alert(res.data.Picture === localStorage.getItem("profilepics"))
-            // alert(localStorage.getItem("profilepics"))
-            // alert(res.data.Picture)
+            
             this.setState({
+                fullname: res.data.Fullname,
                 profilePics: res.data.Picture
             })      
             
         }
-        else{
-            alert("there is issue")
+
+        else if(res.data.Picture == undefined){
+
+           
+            this.setState({
+                profilePics: res.data.Picture,
+                fullname: res.data.Fullname
+            })     
+            
         }
+        
             
             
             
@@ -282,21 +290,20 @@ var UserDashboard = createReactClass({
 
 
         alert(this.state.profilePics)
-        const data = {
-            Picture: this.state.profilePics,
-            Id: localStorage.getItem("Id")
-        }
+        const data = new FormData()
+        data.append('Picture', e.target.files[0])
+        data.append('Id', localStorage.getItem("Id"))
        
         if(this.state.profilePics == ""){
             alert("nothing to save")
         }
         else{
         axios.post('http://localhost:3001/Picture', data).then((res)=>{
-            //alert("Data successfully encrypted")
+            
             
             if(res.data == "good"){
                 alert("profile pics successfully uploaded")
-                // this.props.history.push("/signin/userdashboard/dashboard.js")
+               
             }
            else if(res.data == "bad"){
                 alert("Error occur during insertion")
@@ -325,7 +332,7 @@ var UserDashboard = createReactClass({
                 {/* <img className="gtlogo" src="http://www.citypeopleonline.com/wp-content/uploads/2017/01/Guaranty-Trust-Bank-gtbank-logo.jpg" /> */}
                 <div style={{width: "60%", height: "100px",backgroundColor:"#EEEEEE", marginLeft:"18%",borderRadius:"100%",marginTop:"20px"}}><label for="profile" id="shield" style={{width: "100%", height: "100px"}} ><p id="hint" style={{textAlign:"center", display: "block",paddingTop: "30px", fontSize:"12px"}}>Tap to upload<br/>profile picture</p><img className="Gtlogo" id="gtlogo" src={this.state.profilePics} style={{width:"100%",height:"100px",display:"none",borderRadius:"100%"}}/></label></div>
                 <input id="profile" onChange={this.handleImage} name="profilePics" type="file" style={{display: "none"}} />
-                <h3 className="profile"><i style={{color: "green"}}>Kolawole Ridwan</i></h3>
+                <h3 className="profile"><i style={{color: "green"}}>{this.state.fullname}</i></h3>
                 <hr/>
                 <NavLink to = "/signin/userdashboard/dashboard.js" style={{textDecoration:"none"}}><button className="nav1" name="Bcolor1" onClick={this.click1} style={{backgroundColor: this.state.bg1, color: this.state.c1}}><FaGripVertical style={{float:"left", height:"25px",display:"inline-block",marginTop:"10px", marginLeft:"3%" }}/><p style={{paddingLeft: "10%", paddingRight: "5%",display:"inline-block", paddingTop: "5px"}}>Dashboard</p></button></NavLink><br/>
                 <NavLink exact to = "/signin/userdashboard/editProfile.js" style={{textDecoration:"none"}}><button className="nav1" name="Bcolor1" onClick={this.click2} style={{backgroundColor: this.state.bg2, color: this.state.c2}}><FaUserEdit style={{float:"left", height:"25px",display:"inline-block",marginTop:"10px", width: "27px" }}/><p style={{paddingLeft: "10%", paddingRight: "5%",display:"inline-block", paddingTop: "5px"}}>Edit Profile</p></button></NavLink><br/>

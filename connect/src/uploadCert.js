@@ -16,16 +16,16 @@ var UploadCert = createReactClass({
     },
     handleChange: function(e){
         this.setState({
-            SchoolCert: URL.createObjectURL(e.target.files[0])
+            SchoolCert: e.target.files[0]
         })
     },
     post: function(e){
         e.preventDefault()
 
-        const data = {
-        SchoolCert: this.state.SchoolCert,
-        Id: localStorage.getItem("Id")
-        }
+        const data = new FormData()
+        data.append("SchoolCert", this.state.SchoolCert)
+        data.append("Id", localStorage.getItem("Id"))
+        
 
         axios.post('http://localhost:3001/SchoolCert', data).then((res)=>{
             //alert("Data successfully encrypted")

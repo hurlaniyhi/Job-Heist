@@ -16,16 +16,18 @@ var UploadCV = createReactClass({
     },
     handleChange: function(e){
         this.setState({
-            CV: URL.createObjectURL(e.target.files[0])
+            CV: e.target.files[0]
         })
     },
     post: function(e){
+
         e.preventDefault()
-     alert(localStorage.getItem("Id"))
-        const data = {
-        CV: this.state.CV,
-        Id: localStorage.getItem("Id")
-        }
+
+     
+        const data = new FormData()
+        data.append('CV', this.state.CV)
+        data.append('Id', localStorage.getItem("Id"))
+        
 
 
         axios.post('http://localhost:3001/CV', data).then((res)=>{

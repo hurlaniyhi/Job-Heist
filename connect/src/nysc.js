@@ -16,16 +16,16 @@ var NYSC = createReactClass({
     },
     handleChange: function(e){
         this.setState({
-            NyscFile: URL.createObjectURL(e.target.files[0])
+            NyscFile:e.target.files[0]
         })
     },
     post: function(e){
         e.preventDefault()
 
-        const data = {
-        NyscFile: this.state.NyscFile,
-        Id: localStorage.getItem("Id")
-        }
+        const data = new FormData()
+        data.append("NyscFile", this.state.NyscFile)
+        data.append("Id", localStorage.getItem("Id"))
+        
 
         axios.post('http://localhost:3001/Nysc', data).then((res)=>{
             //alert("Data successfully encrypted")

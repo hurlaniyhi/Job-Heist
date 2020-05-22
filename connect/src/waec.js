@@ -16,16 +16,16 @@ var Waec = createReactClass({
     },
     handleChange: function(e){
         this.setState({
-            Waec: URL.createObjectURL(e.target.files[0])
+            Waec: e.target.files[0]
         })
     },
     post: function(e){
         e.preventDefault()
 
-        const data = {
-        Waec: this.state.Waec,
-        Id: localStorage.getItem("Id")
-        }
+        const data = new FormData()
+        data.append('Waec', this.state.Waec)
+        data.append("Id", localStorage.getItem("Id"))
+        
 
         axios.post('http://localhost:3001/Waec', data).then((res)=>{
             //alert("Data successfully encrypted")

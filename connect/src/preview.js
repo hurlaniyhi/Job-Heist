@@ -75,7 +75,7 @@ var Preview = createReactClass({
                 NyscFile: res.data.NyscFile
 
             })
-            alert(res.data.ClassOfDegree)
+            
         }
             
             
@@ -87,6 +87,74 @@ var Preview = createReactClass({
     }
     },
 
+    download: function(){
+
+        const data = {
+
+        }
+       
+        axios.get('http://localhost:3001/file/'+this.state.CV, data).then((res)=>{
+            
+                
+                window.open("http://localhost:3001/file/"+this.state.CV, '_blank')
+                
+            }).catch((err)=>{
+                alert("error occurred")
+                console.log(err)
+            })
+        
+    },
+    download2: function(){
+
+        const data = {
+
+        }
+       
+        axios.get('http://localhost:3001/file/'+this.state.SchoolCert, data).then((res)=>{
+            
+                
+                window.open("http://localhost:3001/file/"+this.state.SchoolCert, '_blank')
+                
+            }).catch((err)=>{
+                alert("error occurred")
+                console.log(err)
+            })
+        
+    },
+    download3: function(){
+
+        const data = {
+
+        }
+       
+        axios.get('http://localhost:3001/file/'+this.state.NyscFile, data).then((res)=>{
+            
+                
+                window.open("http://localhost:3001/file/"+this.state.NyscFile, '_blank')
+                
+            }).catch((err)=>{
+                alert("error occurred")
+                console.log(err)
+            })
+        
+    },
+    download4: function(){
+
+        const data = {
+
+        }
+       
+        axios.get('http://localhost:3001/file/'+this.state.Waec, data).then((res)=>{
+            
+                
+                window.open("http://localhost:3001/file/"+this.state.Waec, '_blank')
+                
+            }).catch((err)=>{
+                alert("error occurred")
+                console.log(err)
+            })
+        
+    },
     
     render: function(){
         return(
@@ -161,10 +229,13 @@ var Preview = createReactClass({
 
                <br/><br/>
                 
-               <a href = {this.state.CV} download><button style={{width: "15%",marginLeft:"10%",marginRight: "5%",backgroundColor: "blue", hight:"45px",display:"inline-block"}}>CV</button></a>
-               <a href = {this.state.SchoolCert} download><button style={{width: "15%",marginRight: "5%",backgroundColor: "blue", hight:"45px",display:"inline-block"}}>SchoolCert</button></a>
-               <a href = {this.state.NyscFile} download><button style={{width: "15%",marginRight: "5%",backgroundColor: "blue", hight:"45%",display:"inline-block"}}>Nysc</button></a>
-               <a href = {this.state.Waec} download><button style={{width: "15%",marginRight: "5%",backgroundColor: "blue", hight:"45px",display:"inline-block"}}>O'Level</button></a>
+               <h3 style={{textAlign: "center"}}>Download Candidate Uploaded Files</h3>
+                <br/>
+
+               <button id="short" onClick={this.download} style={{width: "15%",color:"white", marginLeft:"10%",marginRight: "5%",backgroundColor: "green", hight:"45px",display:"inline-block",height:"45px", borderRadius:"10px",borderBottomStyle: "none",borderRightStyle: "none"}}>CV</button>
+               <button id="short" onClick={this.download2} style={{width: "15%",marginRight: "5%",color:"white", backgroundColor: "green", hight:"45px",display:"inline-block",height:"45px", borderRadius:"10px",borderBottomStyle: "none",borderRightStyle: "none"}}>Cert</button>
+               <button id="short" onClick={this.download3} style={{width: "15%",marginRight: "5%",color:"white",backgroundColor: "green", hight:"45%",display:"inline-block",height:"45px", borderRadius:"10px",borderBottomStyle: "none",borderRightStyle: "none"}}>Nysc</button>
+               <button id="short" onClick={this.download4} style={{width: "15%",marginRight: "5%",color:"white",backgroundColor: "green", hight:"45px",display:"inline-block",height:"45px", borderRadius:"10px",borderBottomStyle: "none",borderRightStyle: "none"}}>O'Level</button>
                 <br/><br/>
                     </div>
                     <br/><br/>

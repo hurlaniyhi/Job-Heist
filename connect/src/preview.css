@@ -51,6 +51,9 @@
     #epln{
         font-size: 17px
     }
+    #short{
+        font-size: 10px;
+    }
 }
 
 @media(max-width: 450px){
@@ -62,5 +65,8 @@
     }
     .ph3{
         font-size: 22px;
+    }
+    #short{
+        font-size: 10px;
     }
 }
